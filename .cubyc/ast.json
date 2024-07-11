@@ -1,0 +1,161 @@
+{
+    "_type": "Module",
+    "body": [
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "A",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Attribute",
+                    "value": {
+                        "_type": "Attribute",
+                        "value": {
+                            "_type": "Name",
+                            "id": "np",
+                            "ctx": {
+                                "_type": "Load"
+                            }
+                        },
+                        "attr": "random",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    "attr": "rand",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [
+                    {
+                        "_type": "Name",
+                        "id": "n_size",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    {
+                        "_type": "Name",
+                        "id": "n_size",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    }
+                ],
+                "keywords": []
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "B",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Attribute",
+                    "value": {
+                        "_type": "Attribute",
+                        "value": {
+                            "_type": "Name",
+                            "id": "np",
+                            "ctx": {
+                                "_type": "Load"
+                            }
+                        },
+                        "attr": "random",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    "attr": "rand",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [
+                    {
+                        "_type": "Name",
+                        "id": "n_size",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    {
+                        "_type": "Name",
+                        "id": "n_size",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    }
+                ],
+                "keywords": []
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "_",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Attribute",
+                    "value": {
+                        "_type": "Name",
+                        "id": "np",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    "attr": "dot",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [
+                    {
+                        "_type": "Name",
+                        "id": "A",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    {
+                        "_type": "Name",
+                        "id": "B",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    }
+                ],
+                "keywords": []
+            },
+            "type_comment": null
+        }
+    ],
+    "type_ignores": []
+}
