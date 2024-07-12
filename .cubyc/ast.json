@@ -806,31 +806,6 @@
                             },
                             "body": [],
                             "orelse": []
-                        },
-                        {
-                            "_type": "Expr",
-                            "value": {
-                                "_type": "Yield",
-                                "value": {
-                                    "_type": "Dict",
-                                    "keys": [
-                                        {
-                                            "_type": "Constant",
-                                            "value": "loss",
-                                            "kind": null
-                                        }
-                                    ],
-                                    "values": [
-                                        {
-                                            "_type": "Name",
-                                            "id": "loss",
-                                            "ctx": {
-                                                "_type": "Load"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
                         }
                     ],
                     "orelse": [],
@@ -1288,6 +1263,11 @@
                             "keys": [
                                 {
                                     "_type": "Constant",
+                                    "value": "loss",
+                                    "kind": null
+                                },
+                                {
+                                    "_type": "Constant",
                                     "value": "test_loss",
                                     "kind": null
                                 },
@@ -1298,6 +1278,13 @@
                                 }
                             ],
                             "values": [
+                                {
+                                    "_type": "Name",
+                                    "id": "loss",
+                                    "ctx": {
+                                        "_type": "Load"
+                                    }
+                                },
                                 {
                                     "_type": "Name",
                                     "id": "test_loss",

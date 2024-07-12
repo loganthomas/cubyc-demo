@@ -1,9 +1,9 @@
 {
-    "code": "\ntraining_data = datasets.FashionMNIST(\n    root='data',\n    train=True,\n    download=True,\n    transform=ToTensor()\n)\n\ntest_data = datasets.FashionMNIST(\n    root='data',\n    train=False,\n    download=True,\n    transform=ToTensor()\n)\n\ntrain_dataloader = DataLoader(training_data, batch_size)\ntest_dataloader = DataLoader(test_data, batch_size)\n\nmodel = Network()\nloss_fn = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(model.parameters(), lr=1e-3)\n\nepochs = 5\nfor epoch in range(epochs):\n    print(f'Epoch {epoch}')\n    print('-' * 72)\n    # Train loop\n    size = len(train_dataloader.dataset)\n    model.train()\n    for batch, (X, y) in enumerate(train_dataloader):\n        pred = model(X)\n        loss = loss_fn(pred, y)\n\n        loss.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n        loss, current = loss.item(), batch * batch_size + len(X)\n        if batch % 100 == 0:\n            print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')\n        yield {'loss': loss}\n    # Test loop\n    model.eval()\n    size = len(test_dataloader.dataset)\n    num_batches = len(test_dataloader)\n    test_loss, correct = 0, 0\n\n    with torch.no_grad():\n        for X, y in test_dataloader:\n            pred = model(X)\n            test_loss += loss_fn(pred, y).item()\n            correct += (pred.argmax(axis=1) == y).type(torch.float).sum().item()\n    test_loss /= num_batches\n    correct /= size\n    print(f'Test Error:\\nAccurcacy: {(100 * correct):>0.1f}% Avg loss: {test_loss:>8f}\\n')\n    yield {'test_loss': test_loss, 'acc': correct}\nprint('Done.')",
+    "code": "\ntraining_data = datasets.FashionMNIST(\n    root='data',\n    train=True,\n    download=True,\n    transform=ToTensor()\n)\n\ntest_data = datasets.FashionMNIST(\n    root='data',\n    train=False,\n    download=True,\n    transform=ToTensor()\n)\n\ntrain_dataloader = DataLoader(training_data, batch_size)\ntest_dataloader = DataLoader(test_data, batch_size)\n\nmodel = Network()\nloss_fn = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(model.parameters(), lr=1e-3)\n\nepochs = 5\nfor epoch in range(epochs):\n    print(f'Epoch {epoch}')\n    print('-' * 72)\n\n    # Train loop\n    size = len(train_dataloader.dataset)\n    model.train()\n    for batch, (X, y) in enumerate(train_dataloader):\n        pred = model(X)\n        loss = loss_fn(pred, y)\n\n        loss.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n        loss, current = loss.item(), batch * batch_size + len(X)\n        if batch % 100 == 0:\n            print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')\n\n    # Test loop\n    model.eval()\n    size = len(test_dataloader.dataset)\n    num_batches = len(test_dataloader)\n    test_loss, correct = 0, 0\n\n    with torch.no_grad():\n        for X, y in test_dataloader:\n            pred = model(X)\n            test_loss += loss_fn(pred, y).item()\n            correct += (pred.argmax(axis=1) == y).type(torch.float).sum().item()\n    test_loss /= num_batches\n    correct /= size\n    print(f'Test Error:\\nAccurcacy: {(100 * correct):>0.1f}% Avg loss: {test_loss:>8f}\\n')\n    yield {'loss': loss, 'test_loss': test_loss, 'acc': correct}\nprint('Done.')",
     "cpu": {
         "cores": 6,
         "threads": 12,
-        "usage": 50.1
+        "usage": 6.6
     },
     "disk_gb": {
         "total": 499.963174912,
@@ -11,8 +11,8 @@
     },
     "memory_gb": {
         "total": 34.359738368,
-        "available": 23.883132928,
-        "used": 10.473570304
+        "available": 25.943293952,
+        "used": 8.412995584
     },
     "python": {
         "version": "Python 3.12.4"
@@ -92,9 +92,9 @@
         "click==8.1.7",
         "tabulate==0.9.0"
     ],
-    "runtime": 0.098696,
+    "runtime": 0.142843,
     "tags": [
         "fashion-mnist"
     ],
-    "timestamp": "2024-07-11 22:14:10.583217"
+    "timestamp": "2024-07-12 06:59:54.812495"
 }

@@ -88,6 +88,7 @@ def experiment_run(batch_size):
     for epoch in range(epochs):
         print(f'Epoch {epoch}')
         print('-' * 72)
+
         # Train loop
         size = len(train_dataloader.dataset)
         model.train()
@@ -101,7 +102,7 @@ def experiment_run(batch_size):
             loss, current = loss.item(), batch * batch_size + len(X)
             if batch % 100 == 0:
                 print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')
-            yield {'loss': loss}
+
         # Test loop
         model.eval()
         size = len(test_dataloader.dataset)
@@ -116,7 +117,7 @@ def experiment_run(batch_size):
         test_loss /= num_batches
         correct /= size
         print(f'Test Error:\nAccurcacy: {(100 * correct):>0.1f}% Avg loss: {test_loss:>8f}\n')
-        yield {'test_loss': test_loss, 'acc': correct}
+        yield {'loss': loss, 'test_loss': test_loss, 'acc': correct}
     print('Done.')
 
 
