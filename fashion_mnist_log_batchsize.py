@@ -39,11 +39,12 @@ def train_loop(dataloader, model, batch_size, loss_fn, optimizer):
             loss, current = loss.item(), batch * batch_size + len(X)
             print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')
 
+
 def test_loop(dataloader, model, loss_fn):
     model.eval()
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
-    test_loss, correct = 0,0
+    test_loss, correct = 0, 0
 
     with torch.no_grad():
         for X, y in dataloader:
@@ -52,7 +53,7 @@ def test_loop(dataloader, model, loss_fn):
             correct += (pred.argmax(axis=1) == y).type(torch.float).sum().item()
     test_loss /= num_batches
     correct /= size
-    print(f'Test Error:\nAccurcacy: {(100*correct):>0.1f}% Avg loss: {test_loss:>8f}\n')
+    print(f'Test Error:\nAccurcacy: {(100 * correct):>0.1f}% Avg loss: {test_loss:>8f}\n')
 
 
 @Run(tags=['fashion-mnist'])
@@ -82,11 +83,12 @@ def experiment_run(batch_size):
     epochs = 5
     for epoch in range(epochs):
         print(f'Epoch {epoch}')
-        print('-'*72)
+        print('-' * 72)
         train_loop(train_dataloader, model, batch_size, loss_fn, optimizer)
         test_loop(test_dataloader, model, loss_fn)
     print('Done.')
 
 
-for batch_size in [32, 64, 128]:
-    experiment_run(batch_size)
+if __name__ == '__main__':
+    for batch_size in [32, 64, 128]:
+        experiment_run(batch_size=batch_size)

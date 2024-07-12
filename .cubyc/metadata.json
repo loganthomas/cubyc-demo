@@ -1,9 +1,9 @@
 {
-    "code": "\ntraining_data = datasets.FashionMNIST(\n    root='data',\n    train=True,\n    download=True,\n    transform=ToTensor()\n)\n\ntest_data = datasets.FashionMNIST(\n    root='data',\n    train=False,\n    download=True,\n    transform=ToTensor()\n)\n\ntrain_dataloader = DataLoader(training_data, batch_size)\ntest_dataloader = DataLoader(test_data, batch_size)\n\nmodel = Network()\nloss_fn = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(model.parameters(), lr=1e-3)\n\nepochs = 5\nfor epoch in range(epochs):\n    print(f'Epoch {epoch}')\n    print('-'*72)\n    train_loop(train_dataloader, model, batch_size, loss_fn, optimizer)\n    test_loop(test_dataloader, model, loss_fn)\nprint('Done.')",
+    "code": "\ntraining_data = datasets.FashionMNIST(\n    root='data',\n    train=True,\n    download=True,\n    transform=ToTensor()\n)\n\ntest_data = datasets.FashionMNIST(\n    root='data',\n    train=False,\n    download=True,\n    transform=ToTensor()\n)\n\ntrain_dataloader = DataLoader(training_data, batch_size)\ntest_dataloader = DataLoader(test_data, batch_size)\n\nmodel = Network()\nloss_fn = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(model.parameters(), lr=1e-3)\n\nepochs = 5\nfor epoch in range(epochs):\n    print(f'Epoch {epoch}')\n    print('-' * 72)\n    train_loop(train_dataloader, model, batch_size, loss_fn, optimizer)\n    test_loop(test_dataloader, model, loss_fn)\nprint('Done.')",
     "cpu": {
         "cores": 6,
         "threads": 12,
-        "usage": 50.8
+        "usage": 52.8
     },
     "disk_gb": {
         "total": 499.963174912,
@@ -11,8 +11,8 @@
     },
     "memory_gb": {
         "total": 34.359738368,
-        "available": 24.163610624,
-        "used": 10.19318272
+        "available": 24.119607296,
+        "used": 10.237575168
     },
     "python": {
         "version": "Python 3.12.4"
@@ -92,9 +92,9 @@
         "click==8.1.7",
         "tabulate==0.9.0"
     ],
-    "runtime": 40.192285,
+    "runtime": 43.576894,
     "tags": [
         "fashion-mnist"
     ],
-    "timestamp": "2024-07-11 21:21:03.104655"
+    "timestamp": "2024-07-11 21:25:43.463984"
 }
