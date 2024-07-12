@@ -41,6 +41,7 @@ def train_loop(dataloader, model, batch_size, loss_fn, optimizer):
             print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')
             yield {'loss': loss}
 
+
 @Run(tags=['fashion-mnist'])
 def test_loop(dataloader, model, loss_fn):
     model.eval()
