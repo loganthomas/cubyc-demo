@@ -102,7 +102,7 @@ def experiment_run(batch_size):
             if batch % 100 == 0:
                 loss, current = loss.item(), batch * batch_size + len(X)
                 print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')
-            yield {'loss': loss}
+            yield {'loss': loss.item()}
         # Test loop
         model.eval()
         size = len(test_dataloader.dataset)

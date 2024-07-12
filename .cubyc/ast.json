@@ -823,11 +823,23 @@
                                     ],
                                     "values": [
                                         {
-                                            "_type": "Name",
-                                            "id": "loss",
-                                            "ctx": {
-                                                "_type": "Load"
-                                            }
+                                            "_type": "Call",
+                                            "func": {
+                                                "_type": "Attribute",
+                                                "value": {
+                                                    "_type": "Name",
+                                                    "id": "loss",
+                                                    "ctx": {
+                                                        "_type": "Load"
+                                                    }
+                                                },
+                                                "attr": "item",
+                                                "ctx": {
+                                                    "_type": "Load"
+                                                }
+                                            },
+                                            "args": [],
+                                            "keywords": []
                                         }
                                     ]
                                 }
