@@ -1,9 +1,9 @@
 {
-    "code": "size = len(dataloader.dataset)\nmodel.train()\nfor batch, (X, y) in enumerate(dataloader):\n    pred = model(X)\n    loss = loss_fn(pred, y)\n\n    loss.backward()\n    optimizer.step()\n    optimizer.zero_grad()\n\n    if batch % 100 == 0:\n        loss, current = loss.item(), batch * batch_size + len(X)\n        print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')\n    yield {'loss': loss}",
+    "code": "model.eval()\nsize = len(dataloader.dataset)\nnum_batches = len(dataloader)\ntest_loss, correct = 0, 0\n\nwith torch.no_grad():\n    for X, y in dataloader:\n        pred = model(X)\n        test_loss += loss_fn(pred, y).item()\n        correct += (pred.argmax(axis=1) == y).type(torch.float).sum().item()\ntest_loss /= num_batches\ncorrect /= size\nprint(f'Test Error:\\nAccurcacy: {(100 * correct):>0.1f}% Avg loss: {test_loss:>8f}\\n')\nyield {'test_loss': test_loss, 'acc': correct}",
     "cpu": {
         "cores": 6,
         "threads": 12,
-        "usage": 10.3
+        "usage": 10.2
     },
     "disk_gb": {
         "total": 499.963174912,
@@ -11,8 +11,8 @@
     },
     "memory_gb": {
         "total": 34.359738368,
-        "available": 24.111112192,
-        "used": 10.245894144
+        "available": 23.978459136,
+        "used": 10.37735936
     },
     "python": {
         "version": "Python 3.12.4"
@@ -92,9 +92,9 @@
         "click==8.1.7",
         "tabulate==0.9.0"
     ],
-    "runtime": 0.088364,
+    "runtime": 0.086049,
     "tags": [
         "fashion-mnist"
     ],
-    "timestamp": "2024-07-11 21:47:50.989788"
+    "timestamp": "2024-07-11 21:49:41.044549"
 }
