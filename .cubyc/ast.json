@@ -669,6 +669,107 @@
                             }
                         },
                         {
+                            "_type": "Assign",
+                            "targets": [
+                                {
+                                    "_type": "Tuple",
+                                    "elts": [
+                                        {
+                                            "_type": "Name",
+                                            "id": "loss",
+                                            "ctx": {
+                                                "_type": "Store"
+                                            }
+                                        },
+                                        {
+                                            "_type": "Name",
+                                            "id": "current",
+                                            "ctx": {
+                                                "_type": "Store"
+                                            }
+                                        }
+                                    ],
+                                    "ctx": {
+                                        "_type": "Store"
+                                    }
+                                }
+                            ],
+                            "value": {
+                                "_type": "Tuple",
+                                "elts": [
+                                    {
+                                        "_type": "Call",
+                                        "func": {
+                                            "_type": "Attribute",
+                                            "value": {
+                                                "_type": "Name",
+                                                "id": "loss",
+                                                "ctx": {
+                                                    "_type": "Load"
+                                                }
+                                            },
+                                            "attr": "item",
+                                            "ctx": {
+                                                "_type": "Load"
+                                            }
+                                        },
+                                        "args": [],
+                                        "keywords": []
+                                    },
+                                    {
+                                        "_type": "BinOp",
+                                        "left": {
+                                            "_type": "BinOp",
+                                            "left": {
+                                                "_type": "Name",
+                                                "id": "batch",
+                                                "ctx": {
+                                                    "_type": "Load"
+                                                }
+                                            },
+                                            "op": {
+                                                "_type": "Mult"
+                                            },
+                                            "right": {
+                                                "_type": "Name",
+                                                "id": "batch_size",
+                                                "ctx": {
+                                                    "_type": "Load"
+                                                }
+                                            }
+                                        },
+                                        "op": {
+                                            "_type": "Add"
+                                        },
+                                        "right": {
+                                            "_type": "Call",
+                                            "func": {
+                                                "_type": "Name",
+                                                "id": "len",
+                                                "ctx": {
+                                                    "_type": "Load"
+                                                }
+                                            },
+                                            "args": [
+                                                {
+                                                    "_type": "Name",
+                                                    "id": "X",
+                                                    "ctx": {
+                                                        "_type": "Load"
+                                                    }
+                                                }
+                                            ],
+                                            "keywords": []
+                                        }
+                                    }
+                                ],
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            "type_comment": null
+                        },
+                        {
                             "_type": "If",
                             "test": {
                                 "_type": "Compare",
@@ -703,109 +804,7 @@
                                     }
                                 ]
                             },
-                            "body": [
-                                {
-                                    "_type": "Assign",
-                                    "targets": [
-                                        {
-                                            "_type": "Tuple",
-                                            "elts": [
-                                                {
-                                                    "_type": "Name",
-                                                    "id": "loss",
-                                                    "ctx": {
-                                                        "_type": "Store"
-                                                    }
-                                                },
-                                                {
-                                                    "_type": "Name",
-                                                    "id": "current",
-                                                    "ctx": {
-                                                        "_type": "Store"
-                                                    }
-                                                }
-                                            ],
-                                            "ctx": {
-                                                "_type": "Store"
-                                            }
-                                        }
-                                    ],
-                                    "value": {
-                                        "_type": "Tuple",
-                                        "elts": [
-                                            {
-                                                "_type": "Call",
-                                                "func": {
-                                                    "_type": "Attribute",
-                                                    "value": {
-                                                        "_type": "Name",
-                                                        "id": "loss",
-                                                        "ctx": {
-                                                            "_type": "Load"
-                                                        }
-                                                    },
-                                                    "attr": "item",
-                                                    "ctx": {
-                                                        "_type": "Load"
-                                                    }
-                                                },
-                                                "args": [],
-                                                "keywords": []
-                                            },
-                                            {
-                                                "_type": "BinOp",
-                                                "left": {
-                                                    "_type": "BinOp",
-                                                    "left": {
-                                                        "_type": "Name",
-                                                        "id": "batch",
-                                                        "ctx": {
-                                                            "_type": "Load"
-                                                        }
-                                                    },
-                                                    "op": {
-                                                        "_type": "Mult"
-                                                    },
-                                                    "right": {
-                                                        "_type": "Name",
-                                                        "id": "batch_size",
-                                                        "ctx": {
-                                                            "_type": "Load"
-                                                        }
-                                                    }
-                                                },
-                                                "op": {
-                                                    "_type": "Add"
-                                                },
-                                                "right": {
-                                                    "_type": "Call",
-                                                    "func": {
-                                                        "_type": "Name",
-                                                        "id": "len",
-                                                        "ctx": {
-                                                            "_type": "Load"
-                                                        }
-                                                    },
-                                                    "args": [
-                                                        {
-                                                            "_type": "Name",
-                                                            "id": "X",
-                                                            "ctx": {
-                                                                "_type": "Load"
-                                                            }
-                                                        }
-                                                    ],
-                                                    "keywords": []
-                                                }
-                                            }
-                                        ],
-                                        "ctx": {
-                                            "_type": "Load"
-                                        }
-                                    },
-                                    "type_comment": null
-                                }
-                            ],
+                            "body": [],
                             "orelse": []
                         },
                         {
@@ -823,23 +822,11 @@
                                     ],
                                     "values": [
                                         {
-                                            "_type": "Call",
-                                            "func": {
-                                                "_type": "Attribute",
-                                                "value": {
-                                                    "_type": "Name",
-                                                    "id": "loss",
-                                                    "ctx": {
-                                                        "_type": "Load"
-                                                    }
-                                                },
-                                                "attr": "item",
-                                                "ctx": {
-                                                    "_type": "Load"
-                                                }
-                                            },
-                                            "args": [],
-                                            "keywords": []
+                                            "_type": "Name",
+                                            "id": "loss",
+                                            "ctx": {
+                                                "_type": "Load"
+                                            }
                                         }
                                     ]
                                 }
