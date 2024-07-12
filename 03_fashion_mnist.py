@@ -24,7 +24,7 @@ class Network(nn.Module):
         return logits
 
 
-@Run(tags=['fashion-mnist'])
+# @Run(tags=['fashion-mnist'])
 def train_loop(dataloader, model, batch_size, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
@@ -39,10 +39,10 @@ def train_loop(dataloader, model, batch_size, loss_fn, optimizer):
         if batch % 100 == 0:
             loss, current = loss.item(), batch * batch_size + len(X)
             print(f'loss: {loss:>7f}  [{current:>5d}/{size:>5d}]')
-        yield {'loss': loss}
+        # yield {'loss': loss}
 
 
-@Run(tags=['fashion-mnist'])
+# @Run(tags=['fashion-mnist'])
 def test_loop(dataloader, model, loss_fn):
     model.eval()
     size = len(dataloader.dataset)
@@ -57,10 +57,10 @@ def test_loop(dataloader, model, loss_fn):
     test_loss /= num_batches
     correct /= size
     print(f'Test Error:\nAccurcacy: {(100 * correct):>0.1f}% Avg loss: {test_loss:>8f}\n')
-    yield {'test_loss': test_loss, 'acc': correct}
+    # yield {'test_loss': test_loss, 'acc': correct}
 
 
-@Run(tags=['fashion-mnist'])
+# @Run(tags=['fashion-mnist'])
 def experiment_run(batch_size):
 
     training_data = datasets.FashionMNIST(
