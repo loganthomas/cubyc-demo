@@ -2,33 +2,268 @@
     "_type": "Module",
     "body": [
         {
-            "_type": "Expr",
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "training_data",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
             "value": {
                 "_type": "Call",
                 "func": {
                     "_type": "Attribute",
                     "value": {
                         "_type": "Name",
-                        "id": "model",
+                        "id": "datasets",
                         "ctx": {
                             "_type": "Load"
                         }
                     },
-                    "attr": "eval",
+                    "attr": "FashionMNIST",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [],
+                "keywords": [
+                    {
+                        "_type": "keyword",
+                        "arg": "root",
+                        "value": {
+                            "_type": "Constant",
+                            "value": "data",
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "train",
+                        "value": {
+                            "_type": "Constant",
+                            "value": true,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "download",
+                        "value": {
+                            "_type": "Constant",
+                            "value": true,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "transform",
+                        "value": {
+                            "_type": "Call",
+                            "func": {
+                                "_type": "Name",
+                                "id": "ToTensor",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            "args": [],
+                            "keywords": []
+                        }
+                    }
+                ]
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "test_data",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Attribute",
+                    "value": {
+                        "_type": "Name",
+                        "id": "datasets",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    "attr": "FashionMNIST",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [],
+                "keywords": [
+                    {
+                        "_type": "keyword",
+                        "arg": "root",
+                        "value": {
+                            "_type": "Constant",
+                            "value": "data",
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "train",
+                        "value": {
+                            "_type": "Constant",
+                            "value": false,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "download",
+                        "value": {
+                            "_type": "Constant",
+                            "value": true,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "transform",
+                        "value": {
+                            "_type": "Call",
+                            "func": {
+                                "_type": "Name",
+                                "id": "ToTensor",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            "args": [],
+                            "keywords": []
+                        }
+                    }
+                ]
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "train_dataloader",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Name",
+                    "id": "DataLoader",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [
+                    {
+                        "_type": "Name",
+                        "id": "training_data",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    {
+                        "_type": "Name",
+                        "id": "batch_size",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    }
+                ],
+                "keywords": []
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "test_dataloader",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Name",
+                    "id": "DataLoader",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [
+                    {
+                        "_type": "Name",
+                        "id": "test_data",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    {
+                        "_type": "Name",
+                        "id": "batch_size",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    }
+                ],
+                "keywords": []
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "model",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Name",
+                    "id": "Network",
                     "ctx": {
                         "_type": "Load"
                     }
                 },
                 "args": [],
                 "keywords": []
-            }
+            },
+            "type_comment": null
         },
         {
             "_type": "Assign",
             "targets": [
                 {
                     "_type": "Name",
-                    "id": "size",
+                    "id": "loss_fn",
                     "ctx": {
                         "_type": "Store"
                     }
@@ -37,449 +272,232 @@
             "value": {
                 "_type": "Call",
                 "func": {
-                    "_type": "Name",
-                    "id": "len",
+                    "_type": "Attribute",
+                    "value": {
+                        "_type": "Name",
+                        "id": "nn",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    "attr": "CrossEntropyLoss",
                     "ctx": {
                         "_type": "Load"
                     }
                 },
-                "args": [
-                    {
+                "args": [],
+                "keywords": []
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "optimizer",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Attribute",
+                    "value": {
                         "_type": "Attribute",
                         "value": {
                             "_type": "Name",
-                            "id": "dataloader",
+                            "id": "torch",
                             "ctx": {
                                 "_type": "Load"
                             }
                         },
-                        "attr": "dataset",
+                        "attr": "optim",
                         "ctx": {
                             "_type": "Load"
                         }
-                    }
-                ],
-                "keywords": []
-            },
-            "type_comment": null
-        },
-        {
-            "_type": "Assign",
-            "targets": [
-                {
-                    "_type": "Name",
-                    "id": "num_batches",
-                    "ctx": {
-                        "_type": "Store"
-                    }
-                }
-            ],
-            "value": {
-                "_type": "Call",
-                "func": {
-                    "_type": "Name",
-                    "id": "len",
+                    },
+                    "attr": "SGD",
                     "ctx": {
                         "_type": "Load"
                     }
                 },
                 "args": [
                     {
-                        "_type": "Name",
-                        "id": "dataloader",
-                        "ctx": {
-                            "_type": "Load"
-                        }
-                    }
-                ],
-                "keywords": []
-            },
-            "type_comment": null
-        },
-        {
-            "_type": "Assign",
-            "targets": [
-                {
-                    "_type": "Tuple",
-                    "elts": [
-                        {
-                            "_type": "Name",
-                            "id": "test_loss",
-                            "ctx": {
-                                "_type": "Store"
-                            }
-                        },
-                        {
-                            "_type": "Name",
-                            "id": "correct",
-                            "ctx": {
-                                "_type": "Store"
-                            }
-                        }
-                    ],
-                    "ctx": {
-                        "_type": "Store"
-                    }
-                }
-            ],
-            "value": {
-                "_type": "Tuple",
-                "elts": [
-                    {
-                        "_type": "Constant",
-                        "value": 0,
-                        "kind": null
-                    },
-                    {
-                        "_type": "Constant",
-                        "value": 0,
-                        "kind": null
-                    }
-                ],
-                "ctx": {
-                    "_type": "Load"
-                }
-            },
-            "type_comment": null
-        },
-        {
-            "_type": "With",
-            "items": [
-                {
-                    "_type": "withitem",
-                    "context_expr": {
                         "_type": "Call",
                         "func": {
                             "_type": "Attribute",
                             "value": {
                                 "_type": "Name",
-                                "id": "torch",
+                                "id": "model",
                                 "ctx": {
                                     "_type": "Load"
                                 }
                             },
-                            "attr": "no_grad",
+                            "attr": "parameters",
                             "ctx": {
                                 "_type": "Load"
                             }
                         },
                         "args": [],
                         "keywords": []
-                    },
-                    "optional_vars": null
-                }
-            ],
-            "body": [
-                {
-                    "_type": "For",
-                    "target": {
-                        "_type": "Tuple",
-                        "elts": [
-                            {
-                                "_type": "Name",
-                                "id": "X",
-                                "ctx": {
-                                    "_type": "Store"
-                                }
-                            },
-                            {
-                                "_type": "Name",
-                                "id": "y",
-                                "ctx": {
-                                    "_type": "Store"
-                                }
-                            }
-                        ],
-                        "ctx": {
-                            "_type": "Store"
+                    }
+                ],
+                "keywords": [
+                    {
+                        "_type": "keyword",
+                        "arg": "lr",
+                        "value": {
+                            "_type": "Constant",
+                            "value": 0.001,
+                            "kind": null
                         }
-                    },
-                    "iter": {
-                        "_type": "Name",
-                        "id": "dataloader",
-                        "ctx": {
-                            "_type": "Load"
-                        }
-                    },
-                    "body": [
-                        {
-                            "_type": "Assign",
-                            "targets": [
-                                {
-                                    "_type": "Name",
-                                    "id": "pred",
-                                    "ctx": {
-                                        "_type": "Store"
-                                    }
-                                }
-                            ],
-                            "value": {
-                                "_type": "Call",
-                                "func": {
-                                    "_type": "Name",
-                                    "id": "model",
-                                    "ctx": {
-                                        "_type": "Load"
-                                    }
-                                },
-                                "args": [
-                                    {
-                                        "_type": "Name",
-                                        "id": "X",
-                                        "ctx": {
-                                            "_type": "Load"
-                                        }
-                                    }
-                                ],
-                                "keywords": []
-                            },
-                            "type_comment": null
-                        },
-                        {
-                            "_type": "AugAssign",
-                            "target": {
-                                "_type": "Name",
-                                "id": "test_loss",
-                                "ctx": {
-                                    "_type": "Store"
-                                }
-                            },
-                            "op": {
-                                "_type": "Add"
-                            },
-                            "value": {
-                                "_type": "Call",
-                                "func": {
-                                    "_type": "Attribute",
-                                    "value": {
-                                        "_type": "Call",
-                                        "func": {
-                                            "_type": "Name",
-                                            "id": "loss_fn",
-                                            "ctx": {
-                                                "_type": "Load"
-                                            }
-                                        },
-                                        "args": [
-                                            {
-                                                "_type": "Name",
-                                                "id": "pred",
-                                                "ctx": {
-                                                    "_type": "Load"
-                                                }
-                                            },
-                                            {
-                                                "_type": "Name",
-                                                "id": "y",
-                                                "ctx": {
-                                                    "_type": "Load"
-                                                }
-                                            }
-                                        ],
-                                        "keywords": []
-                                    },
-                                    "attr": "item",
-                                    "ctx": {
-                                        "_type": "Load"
-                                    }
-                                },
-                                "args": [],
-                                "keywords": []
-                            }
-                        },
-                        {
-                            "_type": "AugAssign",
-                            "target": {
-                                "_type": "Name",
-                                "id": "correct",
-                                "ctx": {
-                                    "_type": "Store"
-                                }
-                            },
-                            "op": {
-                                "_type": "Add"
-                            },
-                            "value": {
-                                "_type": "Call",
-                                "func": {
-                                    "_type": "Attribute",
-                                    "value": {
-                                        "_type": "Call",
-                                        "func": {
-                                            "_type": "Attribute",
-                                            "value": {
-                                                "_type": "Call",
-                                                "func": {
-                                                    "_type": "Attribute",
-                                                    "value": {
-                                                        "_type": "Compare",
-                                                        "left": {
-                                                            "_type": "Call",
-                                                            "func": {
-                                                                "_type": "Attribute",
-                                                                "value": {
-                                                                    "_type": "Name",
-                                                                    "id": "pred",
-                                                                    "ctx": {
-                                                                        "_type": "Load"
-                                                                    }
-                                                                },
-                                                                "attr": "argmax",
-                                                                "ctx": {
-                                                                    "_type": "Load"
-                                                                }
-                                                            },
-                                                            "args": [],
-                                                            "keywords": [
-                                                                {
-                                                                    "_type": "keyword",
-                                                                    "arg": "axis",
-                                                                    "value": {
-                                                                        "_type": "Constant",
-                                                                        "value": 1,
-                                                                        "kind": null
-                                                                    }
-                                                                }
-                                                            ]
-                                                        },
-                                                        "ops": [
-                                                            {
-                                                                "_type": "Eq"
-                                                            }
-                                                        ],
-                                                        "comparators": [
-                                                            {
-                                                                "_type": "Name",
-                                                                "id": "y",
-                                                                "ctx": {
-                                                                    "_type": "Load"
-                                                                }
-                                                            }
-                                                        ]
-                                                    },
-                                                    "attr": "type",
-                                                    "ctx": {
-                                                        "_type": "Load"
-                                                    }
-                                                },
-                                                "args": [
-                                                    {
-                                                        "_type": "Attribute",
-                                                        "value": {
-                                                            "_type": "Name",
-                                                            "id": "torch",
-                                                            "ctx": {
-                                                                "_type": "Load"
-                                                            }
-                                                        },
-                                                        "attr": "float",
-                                                        "ctx": {
-                                                            "_type": "Load"
-                                                        }
-                                                    }
-                                                ],
-                                                "keywords": []
-                                            },
-                                            "attr": "sum",
-                                            "ctx": {
-                                                "_type": "Load"
-                                            }
-                                        },
-                                        "args": [],
-                                        "keywords": []
-                                    },
-                                    "attr": "item",
-                                    "ctx": {
-                                        "_type": "Load"
-                                    }
-                                },
-                                "args": [],
-                                "keywords": []
-                            }
-                        }
-                    ],
-                    "orelse": [],
-                    "type_comment": null
-                }
-            ],
+                    }
+                ]
+            },
             "type_comment": null
         },
         {
-            "_type": "AugAssign",
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "epochs",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Constant",
+                "value": 5,
+                "kind": null
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "For",
             "target": {
                 "_type": "Name",
-                "id": "test_loss",
+                "id": "epoch",
                 "ctx": {
                     "_type": "Store"
                 }
             },
-            "op": {
-                "_type": "Div"
-            },
-            "value": {
-                "_type": "Name",
-                "id": "num_batches",
-                "ctx": {
-                    "_type": "Load"
-                }
-            }
-        },
-        {
-            "_type": "AugAssign",
-            "target": {
-                "_type": "Name",
-                "id": "correct",
-                "ctx": {
-                    "_type": "Store"
-                }
-            },
-            "op": {
-                "_type": "Div"
-            },
-            "value": {
-                "_type": "Name",
-                "id": "size",
-                "ctx": {
-                    "_type": "Load"
-                }
-            }
-        },
-        {
-            "_type": "Expr",
-            "value": {
-                "_type": "Yield",
-                "value": {
-                    "_type": "Dict",
-                    "keys": [
-                        {
-                            "_type": "Constant",
-                            "value": "test_loss",
-                            "kind": null
-                        },
-                        {
-                            "_type": "Constant",
-                            "value": "acc",
-                            "kind": null
+            "iter": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Name",
+                    "id": "range",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [
+                    {
+                        "_type": "Name",
+                        "id": "epochs",
+                        "ctx": {
+                            "_type": "Load"
                         }
-                    ],
-                    "values": [
-                        {
+                    }
+                ],
+                "keywords": []
+            },
+            "body": [
+                {
+                    "_type": "Expr",
+                    "value": {
+                        "_type": "Call",
+                        "func": {
                             "_type": "Name",
-                            "id": "test_loss",
+                            "id": "train_loop",
                             "ctx": {
                                 "_type": "Load"
                             }
                         },
-                        {
+                        "args": [
+                            {
+                                "_type": "Name",
+                                "id": "train_dataloader",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "model",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "batch_size",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "loss_fn",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "optimizer",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            }
+                        ],
+                        "keywords": []
+                    }
+                },
+                {
+                    "_type": "Expr",
+                    "value": {
+                        "_type": "Call",
+                        "func": {
                             "_type": "Name",
-                            "id": "correct",
+                            "id": "test_loop",
                             "ctx": {
                                 "_type": "Load"
                             }
-                        }
-                    ]
+                        },
+                        "args": [
+                            {
+                                "_type": "Name",
+                                "id": "test_dataloader",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "model",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "loss_fn",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            }
+                        ],
+                        "keywords": []
+                    }
                 }
-            }
+            ],
+            "orelse": [],
+            "type_comment": null
         }
     ],
     "type_ignores": []
