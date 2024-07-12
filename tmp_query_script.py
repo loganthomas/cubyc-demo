@@ -21,6 +21,13 @@ from cubyc import query
 statement = """
             SELECT config.batch_size
             FROM config
+            LIMIT 5
             """
+
+# statement = """
+#             SELECT logs.name, logs.value
+#             FROM logs
+#             """
+
 
 print(query(statement=statement))

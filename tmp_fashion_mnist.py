@@ -60,22 +60,23 @@ class Network(nn.Module):
     # # yield {'test_loss': test_loss, 'acc': correct}
 
 
+training_data = datasets.FashionMNIST(
+    root='data',
+    train=True,
+    download=True,
+    transform=ToTensor()
+)
+
+test_data = datasets.FashionMNIST(
+    root='data',
+    train=False,
+    download=True,
+    transform=ToTensor()
+)
+
+
 @Run(tags=['fashion-mnist'])
 def experiment_run(batch_size):
-
-    training_data = datasets.FashionMNIST(
-        root='data',
-        train=True,
-        download=True,
-        transform=ToTensor()
-    )
-
-    test_data = datasets.FashionMNIST(
-        root='data',
-        train=False,
-        download=True,
-        transform=ToTensor()
-    )
 
     train_dataloader = DataLoader(training_data, batch_size)
     test_dataloader = DataLoader(test_data, batch_size)
