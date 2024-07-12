@@ -6,7 +6,7 @@
             "targets": [
                 {
                     "_type": "Name",
-                    "id": "A",
+                    "id": "training_data",
                     "ctx": {
                         "_type": "Store"
                     }
@@ -17,20 +17,158 @@
                 "func": {
                     "_type": "Attribute",
                     "value": {
-                        "_type": "Attribute",
-                        "value": {
-                            "_type": "Name",
-                            "id": "np",
-                            "ctx": {
-                                "_type": "Load"
-                            }
-                        },
-                        "attr": "random",
+                        "_type": "Name",
+                        "id": "datasets",
                         "ctx": {
                             "_type": "Load"
                         }
                     },
-                    "attr": "rand",
+                    "attr": "FashionMNIST",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [],
+                "keywords": [
+                    {
+                        "_type": "keyword",
+                        "arg": "root",
+                        "value": {
+                            "_type": "Constant",
+                            "value": "data",
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "train",
+                        "value": {
+                            "_type": "Constant",
+                            "value": true,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "download",
+                        "value": {
+                            "_type": "Constant",
+                            "value": true,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "transform",
+                        "value": {
+                            "_type": "Call",
+                            "func": {
+                                "_type": "Name",
+                                "id": "ToTensor",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            "args": [],
+                            "keywords": []
+                        }
+                    }
+                ]
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "test_data",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Attribute",
+                    "value": {
+                        "_type": "Name",
+                        "id": "datasets",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    "attr": "FashionMNIST",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [],
+                "keywords": [
+                    {
+                        "_type": "keyword",
+                        "arg": "root",
+                        "value": {
+                            "_type": "Constant",
+                            "value": "data",
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "train",
+                        "value": {
+                            "_type": "Constant",
+                            "value": false,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "download",
+                        "value": {
+                            "_type": "Constant",
+                            "value": true,
+                            "kind": null
+                        }
+                    },
+                    {
+                        "_type": "keyword",
+                        "arg": "transform",
+                        "value": {
+                            "_type": "Call",
+                            "func": {
+                                "_type": "Name",
+                                "id": "ToTensor",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            "args": [],
+                            "keywords": []
+                        }
+                    }
+                ]
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "train_dataloader",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Name",
+                    "id": "DataLoader",
                     "ctx": {
                         "_type": "Load"
                     }
@@ -38,14 +176,14 @@
                 "args": [
                     {
                         "_type": "Name",
-                        "id": "n_size",
+                        "id": "training_data",
                         "ctx": {
                             "_type": "Load"
                         }
                     },
                     {
                         "_type": "Name",
-                        "id": "n_size",
+                        "id": "batch_size",
                         "ctx": {
                             "_type": "Load"
                         }
@@ -60,7 +198,7 @@
             "targets": [
                 {
                     "_type": "Name",
-                    "id": "B",
+                    "id": "test_dataloader",
                     "ctx": {
                         "_type": "Store"
                     }
@@ -69,22 +207,8 @@
             "value": {
                 "_type": "Call",
                 "func": {
-                    "_type": "Attribute",
-                    "value": {
-                        "_type": "Attribute",
-                        "value": {
-                            "_type": "Name",
-                            "id": "np",
-                            "ctx": {
-                                "_type": "Load"
-                            }
-                        },
-                        "attr": "random",
-                        "ctx": {
-                            "_type": "Load"
-                        }
-                    },
-                    "attr": "rand",
+                    "_type": "Name",
+                    "id": "DataLoader",
                     "ctx": {
                         "_type": "Load"
                     }
@@ -92,14 +216,14 @@
                 "args": [
                     {
                         "_type": "Name",
-                        "id": "n_size",
+                        "id": "test_data",
                         "ctx": {
                             "_type": "Load"
                         }
                     },
                     {
                         "_type": "Name",
-                        "id": "n_size",
+                        "id": "batch_size",
                         "ctx": {
                             "_type": "Load"
                         }
@@ -114,7 +238,32 @@
             "targets": [
                 {
                     "_type": "Name",
-                    "id": "_",
+                    "id": "model",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Name",
+                    "id": "Network",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [],
+                "keywords": []
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "loss_fn",
                     "ctx": {
                         "_type": "Store"
                     }
@@ -126,12 +275,122 @@
                     "_type": "Attribute",
                     "value": {
                         "_type": "Name",
-                        "id": "np",
+                        "id": "nn",
                         "ctx": {
                             "_type": "Load"
                         }
                     },
-                    "attr": "dot",
+                    "attr": "CrossEntropyLoss",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [],
+                "keywords": []
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "optimizer",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Attribute",
+                    "value": {
+                        "_type": "Attribute",
+                        "value": {
+                            "_type": "Name",
+                            "id": "torch",
+                            "ctx": {
+                                "_type": "Load"
+                            }
+                        },
+                        "attr": "optim",
+                        "ctx": {
+                            "_type": "Load"
+                        }
+                    },
+                    "attr": "SGD",
+                    "ctx": {
+                        "_type": "Load"
+                    }
+                },
+                "args": [
+                    {
+                        "_type": "Call",
+                        "func": {
+                            "_type": "Attribute",
+                            "value": {
+                                "_type": "Name",
+                                "id": "model",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            "attr": "parameters",
+                            "ctx": {
+                                "_type": "Load"
+                            }
+                        },
+                        "args": [],
+                        "keywords": []
+                    }
+                ],
+                "keywords": [
+                    {
+                        "_type": "keyword",
+                        "arg": "lr",
+                        "value": {
+                            "_type": "Constant",
+                            "value": 0.001,
+                            "kind": null
+                        }
+                    }
+                ]
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "Assign",
+            "targets": [
+                {
+                    "_type": "Name",
+                    "id": "epochs",
+                    "ctx": {
+                        "_type": "Store"
+                    }
+                }
+            ],
+            "value": {
+                "_type": "Constant",
+                "value": 5,
+                "kind": null
+            },
+            "type_comment": null
+        },
+        {
+            "_type": "For",
+            "target": {
+                "_type": "Name",
+                "id": "epoch",
+                "ctx": {
+                    "_type": "Store"
+                }
+            },
+            "iter": {
+                "_type": "Call",
+                "func": {
+                    "_type": "Name",
+                    "id": "range",
                     "ctx": {
                         "_type": "Load"
                     }
@@ -139,14 +398,7 @@
                 "args": [
                     {
                         "_type": "Name",
-                        "id": "A",
-                        "ctx": {
-                            "_type": "Load"
-                        }
-                    },
-                    {
-                        "_type": "Name",
-                        "id": "B",
+                        "id": "epochs",
                         "ctx": {
                             "_type": "Load"
                         }
@@ -154,6 +406,97 @@
                 ],
                 "keywords": []
             },
+            "body": [
+                {
+                    "_type": "Expr",
+                    "value": {
+                        "_type": "Call",
+                        "func": {
+                            "_type": "Name",
+                            "id": "train_loop",
+                            "ctx": {
+                                "_type": "Load"
+                            }
+                        },
+                        "args": [
+                            {
+                                "_type": "Name",
+                                "id": "train_dataloader",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "model",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "batch_size",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "loss_fn",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "optimizer",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            }
+                        ],
+                        "keywords": []
+                    }
+                },
+                {
+                    "_type": "Expr",
+                    "value": {
+                        "_type": "Call",
+                        "func": {
+                            "_type": "Name",
+                            "id": "test_loop",
+                            "ctx": {
+                                "_type": "Load"
+                            }
+                        },
+                        "args": [
+                            {
+                                "_type": "Name",
+                                "id": "test_dataloader",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "model",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            },
+                            {
+                                "_type": "Name",
+                                "id": "loss_fn",
+                                "ctx": {
+                                    "_type": "Load"
+                                }
+                            }
+                        ],
+                        "keywords": []
+                    }
+                }
+            ],
+            "orelse": [],
             "type_comment": null
         }
     ],

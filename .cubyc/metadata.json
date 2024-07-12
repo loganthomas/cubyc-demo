@@ -1,9 +1,9 @@
 {
-    "code": "A = np.random.rand(n_size, n_size)\nB = np.random.rand(n_size, n_size)\n\n_ = np.dot(A, B)",
+    "code": "\ntraining_data = datasets.FashionMNIST(\n    root='data',\n    train=True,\n    download=True,\n    transform=ToTensor()\n)\n\ntest_data = datasets.FashionMNIST(\n    root='data',\n    train=False,\n    download=True,\n    transform=ToTensor()\n)\n\ntrain_dataloader = DataLoader(training_data, batch_size)\ntest_dataloader = DataLoader(test_data, batch_size)\n\nmodel = Network()\nloss_fn = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(model.parameters(), lr=1e-3)\n\nepochs = 5\nfor epoch in range(epochs):\n    print(f'Epoch {epoch}')\n    print('-'*72)\n    train_loop(train_dataloader, model, batch_size, loss_fn, optimizer)\n    test_loop(test_dataloader, model, loss_fn)\nprint('Done.')",
     "cpu": {
         "cores": 6,
         "threads": 12,
-        "usage": 10.2
+        "usage": 50.8
     },
     "disk_gb": {
         "total": 499.963174912,
@@ -11,8 +11,8 @@
     },
     "memory_gb": {
         "total": 34.359738368,
-        "available": 25.097560064,
-        "used": 9.25919232
+        "available": 24.163610624,
+        "used": 10.19318272
     },
     "python": {
         "version": "Python 3.12.4"
@@ -20,6 +20,7 @@
     "requirements": [
         "shellingham==1.5.4",
         "pexpect==4.9.0",
+        "ruff==0.4.4",
         "decorator==5.1.1",
         "pip==24.1.2",
         "tzdata==2024.1",
@@ -40,8 +41,11 @@
         "markdown-it-py==3.0.0",
         "multidict==6.0.5",
         "six==1.16.0",
+        "pycodestyle==2.12.0",
+        "mypy-extensions==1.0.0",
         "pandas==2.2.2",
         "jaraco.functools==4.0.1",
+        "mypy==1.10.1",
         "attrs==23.2.0",
         "wonderwords==2.2.0",
         "jaraco.context==5.3.0",
@@ -50,6 +54,8 @@
         "rich==13.7.1",
         "duckdb==1.0.0",
         "fsspec==2024.6.1",
+        "numpy==1.26.4",
+        "flake8==7.1.0",
         "stack-data==0.6.3",
         "asttokens==2.4.1",
         "yarl==1.9.4",
@@ -62,6 +68,7 @@
         "mdurl==0.1.2",
         "python-dateutil==2.9.0.post0",
         "mpmath==1.3.0",
+        "mccabe==0.7.0",
         "keyring==25.2.1",
         "wcwidth==0.2.13",
         "torch==2.2.2",
@@ -81,13 +88,13 @@
         "Pygments==2.18.0",
         "executing==2.0.1",
         "ipython==8.26.0",
-        "numpy==2.0.0",
+        "pyflakes==3.2.0",
         "click==8.1.7",
         "tabulate==0.9.0"
     ],
-    "runtime": 0.080709,
+    "runtime": 40.192285,
     "tags": [
-        "linear_algebra"
+        "fashion-mnist"
     ],
-    "timestamp": "2024-07-11 15:00:29.157642"
+    "timestamp": "2024-07-11 21:21:03.104655"
 }
